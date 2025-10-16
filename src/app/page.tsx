@@ -15,7 +15,7 @@ const PERSONAL_INFO = {
   github: 'https://github.com/alashle',
   location: 'Washington D.C. Metro Area',
   about: {
-    intro: 'I Transform Complex Challenges Into Elegant Solutions That Create Real Impact.',
+    intro: 'I Transform Complex Challenges Into Elegant Solutions That Create Real Impact',
     main: "My journey spans from bioengineering labs at UMD to L'Oréal's manufacturing floors, and now into the forefront of data science, product management, and generative AI. I bring a unique perspective: the precision of an engineer, the vision of a product manager, and the analytical rigor of a data scientist.",
     closer: "Currently pursuing my MS in Information Systems at UMD as a Terrapin Scholar, I'm leading teams on everything from enterprise NLP platforms to blockchain logistics. I don't just build products, I architect experiences that bridge human needs with technological possibilities.",
   },
@@ -34,12 +34,14 @@ const EDUCATION = [
     degree: 'Master of Science in Information Systems',
     school: "University of Maryland, Robert H. Smith School of Business",
     period: 'Aug 2024 – Dec 2025',
-    gpa: '3.6',
+    gpa: '3.7',
     honors: ['Terrapin Scholar', "Dean's List"],
     highlights: [
-      'Leading Deloitte-sponsored NLP platform development',
-      'Specializing in AI/ML for public sector innovation',
-      'Advanced coursework in cloud architecture & data science',
+      "Graduate-level coursework in Data Mining, AI for Business, Cloud Computing, and Database Management",
+      "AWS Academy Certified in Cloud Architecting and Machine Learning Foundations",
+      "Led Deloitte-sponsored Capstone developing an NLP platform for Veteran sentiment analysis using AWS and LLMs",
+      "Collaborated with cross-functional teams on data-driven projects in predictive analytics and AI strategy",
+      "Developed dashboards, data pipelines, and AI prototypes that bridge business insights with technology innovation"
     ],
   },
   {
@@ -60,6 +62,33 @@ const EDUCATION = [
 const ASSET_TITLE = 'Resources'; // rename this to any option above
 
 const PROJECTS = [
+  {
+    id: 15,
+    title: 'Personal Portfolio v4',
+    company: 'Next.js + Tailwind',
+    period: '2025',
+    context: 'Needed a fast, accessible, and easily updatable personal site to showcase projects and resumes.',
+    description: 'Interactive portfolio featuring project filtering, detail modals, full-screen asset viewer, smooth section scrolling, and responsive dark-mode design.',
+    impact: '95+ Lighthouse score • <200ms TTFB • 100/100 accessibility • 30% engagement boost',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    category: ['featured', 'product'],
+    gradient: 'from-sky-500 to-indigo-500',
+    whatIOwned: [
+      'Designed and implemented the entire site architecture and UX',
+      'Built reusable Project Detail modal with dynamic “Resources” (images, PDFs, links)',
+      'Implemented full-screen asset viewer (click to expand, Esc to close)',
+      'Added smooth scroll indicator to guide navigation between sections',
+      'Optimized for accessibility, Lighthouse metrics, and minimal layout shift',
+      'Managed deployment pipeline and DNS configuration for a custom domain'
+    ],
+    assets: {
+      type: 'links',
+      items: [
+        { label: "You're looking at it right now :)" },
+        { label: 'GitHub Repository', url: 'https://github.com/alashle/personalPortfolio' }
+      ]
+    }
+  },
   {
   id: 1,
   title: 'Veteran Sentiment Analysis Platform',
@@ -83,7 +112,7 @@ const PROJECTS = [
 },
 {
   id: 2,
-  title: 'Food Bank AI Assistant',
+  title: 'Food Bank AI Assistant', // ✅ Done
   company: 'Social Impact',
   period: '2025',
   problem: 'Food insecurity affects millions, and finding resources can be overwhelming',
@@ -105,11 +134,42 @@ const PROJECTS = [
       '/foodbank-ai-2.jpg',
       '/foodbank-ai-3.jpg',
     ],
+    links: [
+    { label: 'GitHub Repository', url: 'https://github.com/Dante4k43/AI-Case-Comp' }
+  ]
   },
 },
 {
   id: 3,
-  title: 'Crime Prediction System',
+  title: 'NBA Team Performance Evolution Dashboard', // ✅ Done
+  company: 'Data Visualization for Business Using Tableau',
+  period: '2025',
+  context: 'NBA analytics teams and fans needed an interactive way to explore how team efficiency, scoring balance, and strategy evolved over a decade of play.',
+  description: 'A Tableau story visualizing ten years of NBA team performance (2014–2024), blending advanced calculated indices, dynamic dashboards, and storytelling design to reveal the anatomy of a champion.',
+  impact: 'Analyzed 10 seasons • 30 teams • Built 3 interactive dashboards • Highlighted championship patterns through efficiency metrics',
+  tech: ['Tableau', 'Python (nba_api)', 'Pandas', 'Calculated Fields', 'Dynamic Parameters', 'LOD Expressions'],
+  category: ['featured', 'product', 'data'],
+  gradient: 'from-amber-500 to-blue-600',
+  whatIOwned: [
+    'Designed and implemented 3 interactive dashboards and 1 supplemental page within Tableau Story',
+    'Engineered data pipeline using Python nba_api to collect and clean 10 seasons of NBA team-level stats',
+    'Developed derived metrics (Offense Index, Defense Index, and Top Teams Metric) for balanced team performance analysis',
+    'Created dynamic map, quadrant analysis, and ranking visualizations with custom tooltips and LOD calculations',
+    'Synthesized findings linking efficiency balance to championship outcomes and league scoring evolution'
+  ],
+  assets: {
+    type: 'links',
+    items: [
+      {
+        label: 'View Full Interactive Tableau Project',
+        url: 'https://public.tableau.com/app/profile/abdoulay.lashley/viz/NBATeamPerformanceEvolutionProject/Story2?publish'
+      }
+    ]
+  },
+},
+{
+  id: 4,
+  title: 'Crime Prediction System', // ✅ Done
   company: 'LAPD Analytics',
   period: '2025',
   context: 'LAPD needed to predict crime hotspots to allocate resources effectively',
@@ -126,13 +186,16 @@ const PROJECTS = [
   ],
   assets: {
     type: 'pdf',
-    url: '/crime-prediction.pdf', // put this file in /public
+    url: '/crime-prediction.pdf',
+    links: [
+      { label: 'GitHub Repository', url: 'https://github.com/alashle/Crime-Prediction-System' }
+    ]
   },
 },
 
 {
-  id: 4,
-  title: "L'Oréal Digital Transformation",
+  id: 5,
+  title: "L'Oréal Digital Transformation", // ✅ Done
   company: "L'Oréal USA",
   period: '2023-2024',
   context: 'LOréal needed to enhance product quality/safety, operational efficiency, and compliance on the manufacturing floor',
@@ -147,11 +210,11 @@ const PROJECTS = [
     'Built Power BI dashboards to visualize efficiency and downtime metrics',
     'Digitized 25+ SOP forms and streamlined operator workflows for compliance'
   ],
-  // assets: { status: 'pending' }, // ✅ Pending
+  assets: { status: 'None' },
 },
 {
-  id: 5,
-  title: 'Bias-Aware Buccal Pulse Oximeter',
+  id: 6,
+  title: 'Bias-Aware Buccal Pulse Oximeter', // ✅ Done
   company: 'UMD Bioengineering',
   period: '2023',
   context: 'Medical devices often lack consideration for racial and ethnic differences in physiology',
@@ -175,7 +238,7 @@ const PROJECTS = [
   },
 },
 {
-  id: 6,
+  id: 7,
   title: 'Blockchain Logistics Platform',
   company: 'Blockchain Business Case',
   period: '2025',
@@ -193,27 +256,165 @@ const PROJECTS = [
   ],
   assets: {
     type: 'pdf',
-    url: '/blockchain-logistics.pdf', // put in /public
+    pdf: '/blockchain-logistics.pdf', // put in /public
   },
 },
 {
-  id: 7,
-  title: 'Global Sales Analytics Dashboard',
-  company: 'Data Visualization',
-  period: '2025',
-  context: 'Global sneaker and streetwear retailers needed insights into cross-country sales, brand dominance, and consumer behavior trends',
-  description: 'Comprehensive Tableau dashboard visualizing key sales metrics, customer behavior, and brand performance across 10 countries',
-  impact: '500 transactions • 10+ dashboards • 30+ products analyzed',
-  tech: ['Tableau', 'Data Cleaning', 'Storytelling with Data', 'Time-Series & Geospatial Analysis'],
-  category: ['featured', 'data', 'product'],
+  id: 8,
+  title: 'Nike Digital Reinvention Strategy', // ✅ Done
+  company: 'Digital Transformation in Business',
+  period: '2024',
+  context: 'Nike needed a cohesive, measurable roadmap to modernize supply chain operations, sustainability, and fan engagement at global scale',
+  description: '24‑month digital reinvention plan integrating predictive analytics, digital twins, IoT, blockchain transparency, and AR/VR experiences',
+  impact: '30% faster supply-chain lead times • 10% waste reduction • $200M projected from smart apparel • 40% faster decision cycles',
+  tech: ['Predictive Analytics', 'IoT', 'Digital Twin', 'Blockchain', 'AR/VR', 'Excel'],
+  category: ['featured', 'product'],
   gradient: 'from-violet-600 to-yellow-600',
   whatIOwned: [
-    'Cleaned and structured Kaggle retail dataset (500+ records across 10 countries)',
-    'Designed 10+ Tableau dashboards integrating time-series, geospatial, and category analysis',
-    'Applied design principles (color theory, accessibility, minimalism) for clear storytelling',
-    'Built interactive story view guiding users from data exploration to insights'
+    'Led strategy development for operations and innovation initiatives tied to measurable KPIs',
+    'Created executive roadmap and architecture for digital twin and AI adoption',
+    'Defined KPIs and financial impact models with cross-functional partners',
+    'Presented final recommendations and sequencing plan to faculty and mentors'
   ],
-  assets: { status: 'pending' }, // ✅ Pending
+  assets: {
+    type: 'pdf',
+    url: '/nike-digital-reinvention.pdf'
+  },
+},
+
+{
+  id: 9,
+  title: 'StatArena Incorporation – Sports DB', // ✅ Done
+  company: 'Database Management Systems',
+  period: '2024',
+  context: 'University sports programs lacked a centralized, reliable system to track teams, players, stadiums, and games',
+  description: 'Normalized relational database supporting roster management, game results, and analyst queries',
+  impact: '3NF schema • 10+ entity tables • Consistent, queryable data for coaches and analysts',
+  tech: ['SQL', 'ER Modeling', 'Lucidchart', 'Microsoft Access'],
+  category: ['data'],
+  gradient: 'from-sky-600 to-indigo-600',
+  whatIOwned: [
+    'Designed ER model and converted to relational schema with primary and foreign keys',
+    'Implemented DDL/DML scripts and enforced referential integrity with cascades',
+    'Built analyst queries for rosters, results, and stadium utilization',
+    'Documented schema decisions for maintainability'
+  ],
+  assets: { 
+    type: 'pdf',
+    url: '/statarena-incorporation.pdf'
+  },
+},
+{
+  id: 10,
+  title: 'The Weeknd Effect – Streaming Analytics', // ✅ Done
+  company: 'Data Analytics, Models & Decisions',
+  period: '2024',
+  context: 'Teams needed to understand which audio features and release choices drive streaming success',
+  description: 'Python ML analysis of 200+ audio features to explain song virality and engagement',
+  impact: 'R² 0.82 on stream prediction • SHAP insights • Highlighted 3.7B streams for Blinding Lights',
+  tech: ['Python', 'Pandas', 'Scikit‑Learn', 'SHAP', 'Matplotlib', 'Seaborn'],
+  category: ['data'],
+  gradient: 'from-rose-600 to-orange-600',
+  whatIOwned: [
+    'Cleaned and engineered cross‑platform streaming datasets',
+    'Trained regression models and produced SHAP interpretability plots',
+    'Delivered narrative visuals translating model drivers for non‑technical viewers'
+  ],
+  assets: {
+    type: 'pdf',
+    url: '/the-weeknd-effect.pdf',
+    links: [
+      { label: 'GitHub Repository', url: 'https://github.com/alashle/The-Weekend-Effect' }
+    ]
+  },
+},
+
+{
+  id: 11,
+  title: 'Explainable ML Platform – SHAP + LLM', // ✅ Done
+  company: 'Harnessing AI for Business',
+  period: '2025',
+  context: 'Business users struggled to trust and interpret model predictions',
+  description: 'Streamlit app combining SHAP visuals with LLM summaries for transparent model explanations',
+  impact: '79% test accuracy • 60% faster interpretation • Automated explainability artifacts',
+  tech: ['Python', 'XGBoost', 'SHAP', 'Streamlit', 'LLaMA‑3‑8B', 'Scikit‑Learn'],
+  category: ['featured', 'product', 'data'],
+  gradient: 'from-fuchsia-600 to-violet-600',
+  whatIOwned: [
+    'Served as PM and requirements lead aligning business goals with model design',
+    'Integrated SHAP and LLM flows for global and local explanations',
+    'Defined Responsible AI guardrails and governance alignment'
+  ],
+  assets: {
+    type: 'links',
+    items: [
+      { label: 'GitHub Repository', url: 'https://github.com/alashle/Explainable-ML-Platform' }
+    ]
+  },
+},
+{
+  id: 12,
+  title: 'Predictive Modeling & Segmentation in R', // ✅ Done
+  company: 'Data Mining & Predictive Analytics',
+  period: '2025',
+  context: 'Stakeholders needed accurate predictions and actionable segments from raw data',
+  description: 'Reusable R workflow for classification, evaluation, and clustering with clear model cards',
+  impact: 'AUC 0.91 • Top‑10 leaderboard • Automated feature and validation pipeline',
+  tech: ['R', 'tidyverse', 'Caret', 'Clustering', 'Cross‑Validation', 'ROC/AUC'],
+  category: ['data'],
+  gradient: 'from-amber-600 to-red-600',
+  whatIOwned: [
+    'Built tidyverse data prep and feature engineering scripts',
+    'Tuned logistic and tree models with cross‑validation and thresholding',
+    'Produced ROC/PR curves and concise model cards for decisions'
+  ],
+  assets: { status: 'None' },
+},
+{
+  id: 13,
+  title: 'Dynamic Travel Itinerary Planner – Generative AI', // ✅ Done
+  company: 'Designing AI Systems',
+  period: '2025',
+  context: 'Travel planners return static results that ignore context like weather, budget, or closures',
+  description: 'LLM‑driven itinerary builder that adapts plans in real time from multiple travel APIs',
+  impact: 'Automated trip creation • 80% less manual planning • 5 APIs integrated',
+  tech: ['Python', 'LLMs', 'Prompt Engineering', 'RAG', 'API Integration', 'Streamlit'],
+  category: ['product', 'data'],
+  gradient: 'from-teal-600 to-blue-600',
+  whatIOwned: [
+    'Architected conversational flow and intent handling',
+    'Optimized prompts and guardrails for reliable recommendations',
+    'Drove UI testing and ethical guidelines for transparency'
+  ],
+  assets: {
+    type: 'pdf',
+    url: '/dynamic-travel-itinerary-planner.pdf',
+    links: [
+      { label: 'GitHub Repository', url: 'https://github.com/alexisjh-umd/ai-travel-itinerary-planner' },
+      { label: 'Project Demo Video', url: 'https://drive.google.com/file/d/1Y5dPwUew8ZaurCICEwzeC7uzfL8XMjol/view?usp=sharing' }
+    ]
+  },
+},
+{
+  id: 14,
+  title: 'DeliveryCorps Transformation – AMP Initiative',
+  company: 'Project Management',
+  period: '2024',
+  context: 'Distribution firm faced rising costs, aging fleet, and fragmented data systems',
+  description: 'Six‑part modernization plan with ERP integration, route optimization, and PMO governance',
+  impact: '$561K budget • 20% efficiency gain • Two new distribution centers identified',
+  tech: ['ProjectLibre', 'ERP', 'Risk Management', 'PMO', 'Cost Analysis'],
+  category: ['product', 'data'],
+  gradient: 'from-slate-600 to-blue-600',
+  whatIOwned: [
+    'Co‑led scope, WBS, budgeting, and scheduling in ProjectLibre',
+    'Built risk and stakeholder matrices with success metrics',
+    'Authored PMO and change‑management framework and presented ROI case'
+  ],
+  assets: { 
+    type: 'pdf',
+    url: '/deliverycorps-transformation.pdf'
+  },
 },
 ]
 
@@ -221,29 +422,112 @@ const PROJECTS = [
 const SKILLS = {
   'Product & Strategy': {
     icon: <Briefcase className="w-5 h-5" />,
-    skills: ['Product Roadmapping', 'User Research', 'A/B Testing', 'Agile/Scrum', 'OKRs & KPIs', "B2B & B2C"],
+    skills: [
+      'Product Management',
+      'Agile & Scrum',
+      'Product Roadmapping',
+      'Stakeholder Communication',
+      'Risk Management',
+      'Cross-functional Collaboration',
+      'Prioritization & QA Oversight',
+      'B2B & B2C Strategy',
+      'OKRs & KPIs'
+    ],
   },
   'Data & Analytics': {
     icon: <Database className="w-5 h-5" />,
-    skills: ['Python', 'SQL', 'Machine Learning', 'NLP', 'Statistical Analysis'],
+    skills: [
+      'Python',
+      'R',
+      'SQL',
+      'Hadoop',
+      'Hive',
+      'Spark',
+      'MapReduce',
+      'PySpark MLlib',
+      'Data Mining & Predictive Analytics',
+      'Statistical Modeling',
+      'Frequent Pattern Mining',
+      'Cluster Analysis'
+    ],
   },
-  Engineering: {
-    icon: <Code className="w-5 h-5" />,
-    skills: ['AWS', 'React', 'Node.js', 'REST APIs', 'Microservices'],
-  },
-  'AI & Innovation': {
+  'AI & Machine Learning': {
     icon: <Brain className="w-5 h-5" />,
-    skills: ['LLMs/GPT', 'Deep Learning', 'MLOps', 'Prompt Engineering'],
+    skills: [
+      'AI/ML',
+      'NLP',
+      'LLMs (GPT-5, OpenAI API)',
+      'Amazon SageMaker',
+      'AWS Comprehend',
+      'Scikit-learn',
+      'Pandas',
+      'Seaborn',
+      'Deep Learning',
+      'MLOps',
+      'Prompt Engineering'
+    ],
   },
-  Visualization: {
+  'Business Intelligence & Visualization': {
     icon: <TrendingUp className="w-5 h-5" />,
-    skills: ['Power BI', 'Tableau', 'D3.js', 'Dashboard Design'],
+    skills: [
+      'Power BI',
+      'Tableau',
+      'Amazon QuickSight',
+      'Google Analytics',
+      'Dashboard Design',
+      'Data Storytelling',
+      'React.js',
+      'Next.js',
+      'Tailwind CSS',
+      'Leaflet.js'
+    ],
   },
-  Biotech: {
+  'Cloud & Databases': {
+    icon: <Code className="w-5 h-5" />,
+    skills: [
+      'AWS (EC2, S3, RDS, Lambda, VPC, CloudFront, Glue, CloudFormation, IAM)',
+      'Azure',
+      'Google Cloud Platform (GCP)',
+      'MySQL',
+      'NoSQL',
+      'MongoDB',
+      'Neo4J',
+      'Snowflake',
+      'BigQuery',
+      'Vercel CDN'
+    ],
+  },
+  'Software & Tools': {
     icon: <Beaker className="w-5 h-5" />,
-    skills: ['cGMP/GDP', 'Clinical Trials', 'CRISPR', 'Cell Culture'],
+    skills: [
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'Microservices',
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'TypeScript',
+      'JSON',
+      'Jupyter',
+      'VSCode',
+      'Git/GitHub',
+      'Google Colab',
+      'SAP',
+      'Microsoft Office',
+      'Google Workspace',
+      'Lucidchart',
+      'Kafka',
+      'Sqoop',
+      'Apache Spark',
+      'OpenCageData API',
+      'Geolib',
+      'Chrome DevTools',
+      'Figma (UX/UI Design)'
+    ],
   },
 }
+
 
 const RESUMES = {
   tech: {
@@ -294,6 +578,15 @@ export default function Portfolio() {
     if (assetViewer) window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [assetViewer])
+
+  // ESC to close project modal
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeProject();
+    };
+    if (projectModalOpen) window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [projectModalOpen]);
 
   const filteredProjects =
     activeFilter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.category.includes(activeFilter))
@@ -593,8 +886,11 @@ export default function Portfolio() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="project-title"
+          onClick={closeProject}
         >
-          <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-5xl w-full max-h-[85vh] overflow-y-auto shadow-2xl">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-5xl w-full max-h-[85vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Header */}
             <div className="flex items-center justify-between gap-3 p-5 border-b border-gray-200 dark:border-gray-800">
               <div>
@@ -651,53 +947,100 @@ export default function Portfolio() {
                           const cols = Math.min(3, selectedProject.assets.items.length);
                           const grid = cols === 1 ? 'grid-cols-1' : cols === 2 ? 'grid-cols-2' : 'grid-cols-3';
                           return (
-                            <div className={`grid gap-2 ${grid}`}>
-                              {selectedProject.assets.items.map((src: string, i: number) => (
-                                <button
-                                  key={i}
-                                  type="button"
-                                  onClick={() => setAssetViewer({ type: 'image', src })}
-                                  aria-label={`Open ${selectedProject.title} image ${i + 1}`}
-                                  className="group relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
-                                >
-                                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                                  <img
-                                    src={src}
-                                    alt={`${selectedProject.title} asset ${i + 1}`}
-                                    loading="lazy"
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                  />
-                                  <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                                </button>
-                              ))}
-                            </div>
+                            <>
+                              <div className={`grid gap-2 ${grid}`}>
+                                {selectedProject.assets.items.map((src: string, i: number) => (
+                                  <button
+                                    key={i}
+                                    type="button"
+                                    onClick={() => setAssetViewer({ type: 'image', src })}
+                                    aria-label={`Open ${selectedProject.title} image ${i + 1}`}
+                                    className="group relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
+                                  >
+                                    <img
+                                      src={src}
+                                      alt={`${selectedProject.title} asset ${i + 1}`}
+                                      loading="lazy"
+                                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                  </button>
+                                ))}
+                              </div>
+                              {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
+                                <ul className="mt-3 list-disc pl-5 space-y-1">
+                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url: string }, i: number) => (
+                                    <li key={i}>
+                                      <a
+                                        href={lnk.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                      >
+                                        {lnk.label}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </>
                           );
                         })()
-                      ) : selectedProject.assets.type === 'pdf' && selectedProject.assets.url ? (
-                        <button
-                          type="button"
-                          onClick={() => setAssetViewer({ type: 'pdf', src: selectedProject.assets.url })}
-                          aria-label={`Open ${selectedProject.title} document`}
-                          className="w-full aspect-[16/10] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.01] hover:shadow-lg"
-                        >
-                          <iframe
-                            src={selectedProject.assets.url}
-                            title={`${selectedProject.title} document`}
-                            className="w-full h-full pointer-events-none"
-                          />
-                        </button>
+                      ) : selectedProject.assets.type === 'pdf' ? (
+                        (() => {
+                          const pdfSrc = (selectedProject.assets as any).url || (selectedProject.assets as any).pdf;
+                          if (!pdfSrc) return null;
+                          return (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
+                                aria-label={`Open ${selectedProject.title} document`}
+                                className="w-full aspect-[16/10] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.01] hover:shadow-lg"
+                              >
+                                <iframe
+                                  src={pdfSrc}
+                                  title={`${selectedProject.title} document`}
+                                  className="w-full h-full pointer-events-none"
+                                />
+                              </button>
+                              {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
+                                <ul className="mt-3 list-disc pl-5 space-y-1">
+                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url: string }, i: number) => (
+                                    <li key={i}>
+                                      <a
+                                        href={lnk.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                      >
+                                        {lnk.label}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </>
+                          );
+                        })()
                       ) : selectedProject.assets.type === 'links' && Array.isArray(selectedProject.assets.items) ? (
                         <ul className="list-disc pl-5 space-y-1">
-                          {selectedProject.assets.items.map((lnk: { label: string; url: string }, i: number) => (
+                          {selectedProject.assets.items.map((lnk: { label: string; url?: string }, i: number) => (
                             <li key={i}>
-                              <a
-                                href={lnk.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
-                              >
-                                {lnk.label}
-                              </a>
+                              {lnk.url ? (
+                                <a
+                                  href={lnk.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                >
+                                  {lnk.label}
+                                </a>
+                              ) : (
+                                <span className="text-sm text-gray-600 dark:text-gray-300 italic">
+                                  {lnk.label}
+                                </span>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -746,7 +1089,7 @@ export default function Portfolio() {
       <section id="contact" className="py-32 bg-gray-50 dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Let's Connect!</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">Ready to build something extraordinary together?</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">Ready to Build Something Extraordinary Together?</p>
 
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-12 shadow-xl">
             <div className="grid md:grid-cols-3 gap-8 mb-12">
