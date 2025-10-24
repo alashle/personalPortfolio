@@ -38,10 +38,15 @@ const EDUCATION = [
     honors: ['Terrapin Scholar', "Dean's List"],
     highlights: [
       "Graduate-level coursework in Data Mining, AI for Business, Cloud Computing, and Database Management",
+      {
+        label: "Full-Stack Product Management Bootcamp Certificate (Leland, 2025)",
+        url: "/Full-Stack PM Bootcamp Certificate - Abdoulay Lashley.pdf",
+        color: "text-green-600 dark:text-green-400"
+      },
       "AWS Academy Certified in Cloud Architecting and Machine Learning Foundations",
       "Led Deloitte-sponsored Capstone developing an NLP platform for Veteran sentiment analysis using AWS and LLMs",
       "Collaborated with cross-functional teams on data-driven projects in predictive analytics and AI strategy",
-      "Developed dashboards, data pipelines, and AI prototypes that bridge business insights with technology innovation"
+      "Developed dashboards, data pipelines, and AI prototypes that bridge business insights with technology innovation",
     ],
   },
   {
@@ -643,14 +648,14 @@ export default function Portfolio() {
               {/* Resume Buttons */}
               <button
                 onClick={() => openResume('tech')}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-pointer"
               >
                 <Eye className="w-4 h-4" />
                 Tech Resume
               </button>
               <button
                 onClick={() => openResume('biotech')}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-pointer"
               >
                 <Eye className="w-4 h-4" />
                 Biotech Resume
@@ -734,7 +739,7 @@ export default function Portfolio() {
             type="button"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
             aria-label="Scroll to next section"
-            className="mt-8 inline-flex items-center justify-center animate-bounce focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
+            className="mt-8 inline-flex items-center justify-center animate-bounce focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full cursor-pointer"
           >
             <ChevronRight className="w-16 h-16 rotate-90 text-gray-500 hover:text-gray-700 transition-colors" />
           </button>
@@ -779,7 +784,7 @@ export default function Portfolio() {
 
           <div className="space-y-8">
             {EDUCATION.map((edu, index) => (
-              <div key={index} className="group bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div key={index} className="group/edu bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 hover:shadow-xl transition-all">
                 <div className="flex flex-col md:flex-row md:justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{edu.degree}</h3>
@@ -801,7 +806,51 @@ export default function Portfolio() {
                   {edu.highlights.map((highlight, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <ChevronRight className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                      <span className="text-sm text-gray-600 dark:text-gray-400">{highlight}</span>
+                      {typeof highlight === 'string' ? (
+                        <span className="text-sm text-gray-600 dark:text-gray-400">{highlight}</span>
+                      ) : (
+                        <span className="relative inline-flex group/link z-10">
+                          <button
+                            type="button"
+                            onClick={() => setAssetViewer({ type: 'pdf', src: (highlight as any).url })}
+                            className={`cursor-pointer text-sm font-medium underline underline-offset-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 ${highlight.color} text-left whitespace-normal focus:outline-none focus:ring-2 focus:ring-green-500`}
+                            aria-haspopup="dialog"
+                            aria-label="Open certificate"
+                          >
+                            {(highlight as any).label}
+                          </button>
+
+                          {/* Popover / tooltip on hover or keyboard focus */}
+                          <div
+                            role="tooltip"
+                            className="absolute left-0 top-full mt-2 w-72 z-20 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-lg p-3 text-sm text-gray-700 dark:text-gray-300
+                                       opacity-0 scale-95 pointer-events-none
+                                       group-hover/link:opacity-100 group-hover/link:scale-100 group-hover/link:pointer-events-auto
+                                       group-focus-within/link:opacity-100 group-focus-within/link:scale-100 group-focus-within/link:pointer-events-auto
+                                       hover:opacity-100 hover:scale-100 hover:pointer-events-auto
+                                       transition"
+                          >
+                            <p className="font-medium mb-1">Full-Stack PM Certificate</p>
+                            <p className="text-xs mb-2">View it in a fullscreen viewer or download the PDF.</p>
+                            <div className="flex gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setAssetViewer({ type: 'pdf', src: (highlight as any).url })}
+                                className="cursor-pointer px-2 py-1 rounded-md bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              >
+                                View
+                              </button>
+                              <a
+                                href={(highlight as any).url}
+                                download
+                                className="cursor-pointer px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              >
+                                Download
+                              </a>
+                            </div>
+                          </div>
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -823,7 +872,7 @@ export default function Portfolio() {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 ${
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 cursor-pointer ${
                   activeFilter === filter
                     ? 'bg-black text-white dark:bg-white dark:text-black'
                     : 'bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -839,7 +888,7 @@ export default function Portfolio() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all hover:scale-105 focus-within:ring-2 focus-within:ring-blue-500"
+                className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all hover:scale-105 focus-within:ring-2 focus-within:ring-blue-500 cursor-pointer"
                 role="button"
                 tabIndex={0}
                 aria-label={`Open details for ${project.title}`}
@@ -1073,7 +1122,7 @@ export default function Portfolio() {
                   {(data as any).skills.map((skill: string, i: number) => (
                     <span
                       key={i}
-                      className="px-3 py-1 bg-white dark:bg-gray-800 rounded-lg text-sm hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors cursor-default"
+                      className="px-3 py-1 bg-white dark:bg-gray-800 rounded-lg text-sm hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors cursor-auto"
                     >
                       {skill}
                     </span>
