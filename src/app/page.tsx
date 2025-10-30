@@ -101,17 +101,17 @@ const PROJECTS = [
   period: '2025',
   context: 'Veteran Affairs needed insights from unstructured social data to improve services',
   description: 'Enterprise NLP platform transforming veteran social data into actionable intelligence',
-  impact: 'Processed 1M+ posts • 25% accuracy improvement • Enhanced decision support for VSOs',
-  tech: ['AWS', 'Python', 'Power BI/Figma'],
+  impact: 'Processed 10K+ posts • 25% accuracy improvement • Enhanced decision support for VSOs',
+  tech: ['Python', 'NLP', 'Power BI', 'LLMs'],
   category: ['featured', 'product', 'data'],
   gradient: 'from-red-600 to-indigo-600',
   whatIOwned: [
-    'Served as Project Manager and primary point of contact for a five-member Deloitte-sponsored Capstone team',
-    'Led business requirements gathering and operations alignment with Deloitte GPS mentors and stakeholders',
-    'Architected AWS data pipeline (S3, Lambda, Glue, OpenSearch) enabling real-time NLP processing and insights',
-    'Developed Python workflows for text cleaning, topic modeling, and sentiment classification across 100K+ posts',
-    'Designed Power BI dashboards and Figma prototypes to visualize insights and present deliverables to Deloitte leadership',
-    'Coordinated sprints, maintained documentation, and ensured on-time delivery of all project milestones'
+    'Served as Project Manager and Business Requirements Representative, leading a five-member Deloitte-sponsored MSIS Capstone team analyzing 10K+ Reddit posts from U.S. Veterans',
+    'Led requirements gathering and stakeholder alignment with Deloitte GPS mentors, ensuring business objectives translated into effective analytical and technical solutions',
+    'Developed and fine-tuned Python workflows for text preprocessing, topic modeling, and sentiment classification using LLM-based clustering across multiple Veteran well-being themes',
+    'Built interactive Power BI dashboards visualizing insights across financial well-being, mental health, healthcare access, and minority Veteran experiences, improving interpretability by 15%',
+    'Implemented a chatbot interface that increased insight accessibility and engagement by 25%, enabling real-time data exploration for Veteran Service Organizations',
+    'Coordinated agile sprints, maintained project documentation, and ensured on-time delivery of all analytical, visualization, and presentation milestones',
   ],
   assets: { status: 'pending' }, // ✅ Pending
 },
@@ -828,7 +828,8 @@ export default function Portfolio() {
                                        group-hover/link:opacity-100 group-hover/link:scale-100 group-hover/link:pointer-events-auto
                                        group-focus-within/link:opacity-100 group-focus-within/link:scale-100 group-focus-within/link:pointer-events-auto
                                        hover:opacity-100 hover:scale-100 hover:pointer-events-auto
-                                       transition"
+                                       before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-3
+                                       transition-all duration-500 ease-in-out delay-150 hover:delay-[150ms]"
                           >
                             <p className="font-medium mb-1">Full-Stack PM Certificate</p>
                             <p className="text-xs mb-2">View it in a fullscreen viewer or download the PDF.</p>
