@@ -38,6 +38,7 @@ export default function RootLayout({
       {/* ▲ End of addition */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
