@@ -1090,9 +1090,12 @@ export default function Portfolio() {
                                   >
                                     <img
                                       src={src}
-                                      alt={`${selectedProject.title} asset ${i + 1}`}
-                                      loading="lazy"
-                                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                      alt=""
+                                      fill
+                                      onError={(e: { currentTarget: { style: { display: string; }; }; }) => {
+                                        e.currentTarget.style.display = 'none'
+                                      }}
+                                      className="absolute inset-0 w-full h-full object-cover"
                                     />
                                     <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                                   </button>
