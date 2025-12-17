@@ -17,7 +17,7 @@ const PERSONAL_INFO = {
   about: {
     intro: 'I Transform Complex Challenges Into Elegant Solutions That Create Real Impact',
     main: "My journey spans from bioengineering labs at UMD to L'Oréal's manufacturing floors, and now into the forefront of data science, product management, and generative AI. I bring a unique perspective: the precision of an engineer, the vision of a product manager, and the analytical rigor of a data scientist.",
-    closer: "Currently pursuing my MS in Information Systems at UMD as a Terrapin Scholar, I'm leading teams on everything from enterprise NLP platforms to blockchain logistics. I don't just build products, I architect experiences that bridge human needs with technological possibilities.",
+    closer: "A recent MS in Information Systems graduate from UMD and Terrapin Scholar, I’ve led teams across projects ranging from enterprise NLP platforms to blockchain logistics. I focus on building thoughtful products that connect real human needs with practical, scalable technology.",
   },
   stats: [
     { label: 'Projects Shipped', value: '5+', icon: <Rocket className="w-12 h-12 mx-auto text-blue-600" /> },
@@ -94,27 +94,45 @@ const PROJECTS = [
       ]
     }
   },
+
   {
-  id: 1,
-  title: 'Veteran Sentiment Analysis Platform',
-  company: 'Deloitte GPS',
-  period: '2025',
-  context: 'Veteran Affairs needed insights from unstructured social data to improve services',
-  description: 'Enterprise NLP platform transforming veteran social data into actionable intelligence',
-  impact: 'Processed 10K+ posts • 25% accuracy improvement • Enhanced decision support for VSOs',
-  tech: ['Python', 'NLP', 'Power BI', 'LLMs'],
-  category: ['featured', 'product', 'data'],
-  gradient: 'from-red-600 to-indigo-600',
-  whatIOwned: [
-    'Served as Project Manager and Business Requirements Representative, leading a five-member Deloitte-sponsored MSIS Capstone team analyzing 10K+ Reddit posts from U.S. Veterans',
-    'Led requirements gathering and stakeholder alignment with Deloitte GPS mentors, ensuring business objectives translated into effective analytical and technical solutions',
-    'Developed and fine-tuned Python workflows for text preprocessing, topic modeling, and sentiment classification using LLM-based clustering across multiple Veteran well-being themes',
-    'Built interactive Power BI dashboards visualizing insights across financial well-being, mental health, healthcare access, and minority Veteran experiences, improving interpretability by 15%',
-    'Implemented a chatbot interface that increased insight accessibility and engagement by 25%, enabling real-time data exploration for Veteran Service Organizations',
-    'Coordinated agile sprints, maintained project documentation, and ensured on-time delivery of all analytical, visualization, and presentation milestones',
-  ],
-  assets: { status: 'pending' }, // ✅ Pending
-},
+    id: 1,
+    title: 'Veteran Sentiment Analysis Platform',
+    company: 'Deloitte GPS',
+    period: '2025',
+    context: 'Veteran Service Organizations needed faster, clearer insight from unstructured online conversations than traditional surveys could provide.',
+    description: 'End-to-end NLP system that ingests public veteran discussions, structures them into sentiment and themes, and supports exploratory analysis through an interactive dashboard and AI Copilot.',
+    impact: 'Analyzed 1,000+ public posts • Thematic and sentiment insights • Filterable dashboard + AI Copilot for stakeholders',
+    tech: ['Python', 'spaCy', 'KeyBERT', 'Transformers', 'FastAPI', 'RAG', 'Chart.js'],
+    category: ['featured', 'product', 'data'],
+    gradient: 'from-red-600 to-indigo-600',
+    whatIOwned: [
+      'Served as Project Manager and Business Requirements Representative, leading a five-member Deloitte-sponsored MSIS Capstone team analyzing 1,000+ Reddit posts from U.S. Veterans',
+      'Led requirements gathering and stakeholder alignment with Deloitte GPS mentors, ensuring business objectives translated into effective analytical and technical solutions',
+      'Developed and fine-tuned Python workflows for text preprocessing, topic modeling, and sentiment classification using LLM-based clustering across multiple Veteran well-being themes',    
+      'Delivered the interactive web dashboard (HTML/CSS/JavaScript + Chart.js) with global filters, theme deep dives, and post-level evidence views.',
+      'Implemented the AI Copilot backend using FastAPI and a Retrieval-Augmented Generation (RAG) workflow to keep answers grounded in the processed dataset.',
+      'Coordinated agile sprints, maintained project documentation, and ensured on-time delivery of all analytical, visualization, and presentation milestones',
+    ],
+    assets: {
+        type: 'images',
+        items: [
+          '/ScreenShots_Demo/executive_overview.png',
+          '/ScreenShots_Demo/executive_overview_post_Explorer.png',
+          '/ScreenShots_Demo/thematic.png',
+          '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
+          '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
+          '/ScreenShots_Demo/Demographic_Lens.png',
+          '/ScreenShots_Demo/contextual_questions_question_categories.png',
+          '/ScreenShots_Demo/contextual_questions_deep_dive.png',
+          '/ScreenShots_Demo/AI_Copilot.png',
+        ],
+        pdf: [
+          '/Final Project Report_Deloitte.pdf',
+        ],
+    },
+  },
+
 {
   id: 2,
   title: 'Food Bank AI Assistant', // ✅ Done
@@ -141,9 +159,10 @@ const PROJECTS = [
     ],
     links: [
     { label: 'GitHub Repository', url: 'https://github.com/Dante4k43/AI-Case-Comp' }
-  ]
+    ]
   },
 },
+
 {
   id: 3,
   title: 'NBA Team Performance Evolution Dashboard', // ✅ Done
@@ -172,6 +191,7 @@ const PROJECTS = [
     ]
   },
 },
+
 {
   id: 4,
   title: 'Crime Prediction System', // ✅ Done
@@ -553,8 +573,14 @@ export default function Portfolio() {
   // Project modal state
   const [projectModalOpen, setProjectModalOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState<number>(-1)
   // Asset viewer state
-  const [assetViewer, setAssetViewer] = useState<{ type: 'image' | 'pdf'; src: string } | null>(null)
+  const [assetViewer, setAssetViewer] = useState<{
+    type: 'image' | 'pdf'
+    src: string
+    index?: number
+    items?: string[]
+  } | null>(null)
 
   
   
@@ -603,12 +629,29 @@ export default function Portfolio() {
 
   // Open/close project modal (keyboard accessible)
   const openProject = (project: any) => {
-    setSelectedProject(project)
-    setProjectModalOpen(true)
+  const idx = PROJECTS.findIndex((p) => p.id === project.id)
+  setSelectedProject(project)
+  setSelectedProjectIndex(idx)
+  setProjectModalOpen(true)
   }
   const closeProject = () => {
-    setProjectModalOpen(false)
-    setSelectedProject(null)
+  setProjectModalOpen(false)
+  setSelectedProject(null)
+  setSelectedProjectIndex(-1)
+  }
+
+  const goPrevProject = () => {
+  if (selectedProjectIndex <= 0) return
+  const prev = PROJECTS[selectedProjectIndex - 1]
+  setSelectedProject(prev)
+  setSelectedProjectIndex(selectedProjectIndex - 1)
+  }
+
+  const goNextProject = () => {
+    if (selectedProjectIndex < 0 || selectedProjectIndex >= PROJECTS.length - 1) return
+    const next = PROJECTS[selectedProjectIndex + 1]
+    setSelectedProject(next)
+    setSelectedProjectIndex(selectedProjectIndex + 1)
   }
 
   return (
@@ -947,10 +990,38 @@ export default function Portfolio() {
                 <h3 id="project-title" className="text-xl font-semibold">{selectedProject.title}</h3>
                 <p className="text-xs text-white-500 dark:text-white-400">{selectedProject.company} • {selectedProject.period}</p>
               </div>
-              <button onClick={closeProject} aria-label="Close project details" className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-                <X className="w-5 h-5" />
-              </button>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={goPrevProject}
+                  disabled={selectedProjectIndex <= 0}
+                  aria-label="Previous project"
+                  className="px-3 py-2 text-sm rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Prev
+                </button>
+
+                <button
+                  type="button"
+                  onClick={goNextProject}
+                  disabled={selectedProjectIndex < 0 || selectedProjectIndex >= PROJECTS.length - 1}
+                  aria-label="Next project"
+                  className="px-3 py-2 text-sm rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Next
+                </button>
+
+                <button
+                  onClick={closeProject}
+                  aria-label="Close project details"
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
+
             {/* Body */} 
             <div className="p-6 grid md:grid-cols-5 gap-6">
               <div className="md:col-span-3 space-y-6">
@@ -1003,7 +1074,14 @@ export default function Portfolio() {
                                   <button
                                     key={i}
                                     type="button"
-                                    onClick={() => setAssetViewer({ type: 'image', src })}
+                                    onClick={() =>
+                                      setAssetViewer({
+                                        type: 'image',
+                                        src,
+                                        index: i,
+                                        items: selectedProject.assets.items,
+                                      })
+                                    }
                                     aria-label={`Open ${selectedProject.title} image ${i + 1}`}
                                     className="group relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
                                   >
@@ -1032,6 +1110,22 @@ export default function Portfolio() {
                                     </li>
                                   ))}
                                 </ul>
+                              )}
+                              {Array.isArray((selectedProject.assets as any).pdf) && (selectedProject.assets as any).pdf.length > 0 && (
+                                <div className="mt-4 space-y-2">
+                                  {(selectedProject.assets as any).pdf.map((pdfSrc: string, i: number) => (
+                                    <button
+                                      key={i}
+                                      type="button"
+                                      onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
+                                      className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                                      aria-label={`Open ${selectedProject.title} document ${i + 1}`}
+                                    >
+                                      <Download className="w-4 h-4" />
+                                      View Report
+                                    </button>
+                                  ))}
+                                </div>
                               )}
                             </>
                           );
@@ -1258,12 +1352,53 @@ export default function Portfolio() {
             </button>
 
             {assetViewer.type === 'image' ? (
-              // Image fills container, maintains aspect
-              <img
-                src={assetViewer.src}
-                alt="Project asset"
-                className="w-full h-full object-contain bg-black"
-              />
+              <div className="relative w-full h-full">
+                <img
+                  src={assetViewer.src}
+                  alt="Project asset"
+                  className="w-full h-full object-contain bg-black"
+                />
+
+                {/* Previous Button */}
+                {assetViewer.items && assetViewer.index !== undefined && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!assetViewer.items || assetViewer.index === undefined || assetViewer.index <= 0) return
+                      setAssetViewer({
+                        ...assetViewer,
+                        index: assetViewer.index - 1,
+                        src: assetViewer.items[assetViewer.index - 1],
+                      })
+                    }}
+                    disabled={assetViewer.index <= 0}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40 disabled:cursor-not-allowed"
+                    aria-label="Previous image"
+                  >
+                    ‹
+                  </button>
+                )}
+
+                {/* Next Button */}
+                {assetViewer.items && assetViewer.index !== undefined && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!assetViewer.items || assetViewer.index === undefined || assetViewer.index >= assetViewer.items.length - 1) return
+                      setAssetViewer({
+                        ...assetViewer,
+                        index: assetViewer.index + 1,
+                        src: assetViewer.items[assetViewer.index + 1],
+                      })
+                    }}
+                    disabled={assetViewer.index >= assetViewer.items.length - 1}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40 disabled:cursor-not-allowed"
+                    aria-label="Next image"
+                  >
+                    ›
+                  </button>
+                )}
+              </div>
             ) : (
               // PDF iframe fills container
               <iframe
