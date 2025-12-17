@@ -121,14 +121,14 @@ const PROJECTS = [
         type: 'images',
         items: [
           '/ScreenShots_Demo/executive_overview.png',
-          '/ScreenShots_Demo/executive_overview_post_Explorer.png',
+          '/ScreenShots_Demo/executive_overview_post_explorer.png',
           '/ScreenShots_Demo/thematic.png',
           '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
           '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
-          '/ScreenShots_Demo/Demographic_Lens.png',
+          '/ScreenShots_Demo/demographic_lens.png',
           '/ScreenShots_Demo/contextual_questions_question_categories.png',
           '/ScreenShots_Demo/contextual_questions_deep_dive.png',
-          '/ScreenShots_Demo/AI_Copilot.png',
+          '/ScreenShots_Demo/ai_copilot.png',
         ],
         pdf: [
           '/Final Project Report_Deloitte.pdf',
