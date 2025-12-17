@@ -121,14 +121,14 @@ const PROJECTS = [
         type: 'images',
         items: [
           '/executive_overview.jpg',
-          '/executive_overview_post_Explorer.jpg',
+          '/executive_overview_post_explorer.jpg',
           '/thematic.jpg',
           '/thematic_insights_thematic_pulse.jpg',
           '/thematic_insights_thematic_deep_dive.jpg',
-          '/Demographic_Lens.jpg',
+          '/demographic_lens.jpg',
           '/contextual_questions_question_categories.jpg',
           '/contextual_questions_deep_dive.jpg',
-          '/AI_Copilot.jpg',
+          '/ai_copilot.jpg',
         ],
         pdf: [
           '/Final Project Report_Deloitte.pdf',
