@@ -569,6 +569,12 @@ const RESUMES = {
 }
 
 export default function Portfolio() {
+  const toPublicUrl = (p: string) => {
+    if (!p) return p
+    const withSlash = p.startsWith('/') ? p : `/${p}`
+    // Important for production: encode spaces and other URL-unsafe characters
+    return encodeURI(withSlash)
+  }
   const [activeFilter, setActiveFilter] = useState<'featured' | 'all' | 'product' | 'data' | 'biotech'>('featured')
   const [showResumeModal, setShowResumeModal] = useState(false)
   const [selectedResume, setSelectedResume] = useState<'tech' | 'biotech'>('tech')
@@ -1089,15 +1095,24 @@ export default function Portfolio() {
                                     className="group relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
                                   >
                                     <img
-                                      src={src}
+                                      src={toPublicUrl(src)}
                                       alt=""
                                       loading="lazy"
                                       onError={(e) => {
-                                        e.currentTarget.style.display = 'none'
+                                        // Don’t hide the element; show a visible fallback and log the failing URL.
+                                        console.warn('Asset failed to load:', src)
+                                        e.currentTarget.style.opacity = '0'
+                                        const btn = e.currentTarget.closest('button')
+                                        if (btn) btn.setAttribute('data-asset-missing', 'true')
                                       }}
                                       className="absolute inset-0 w-full h-full object-cover"
                                     />
-                                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                    <div className="pointer-events-none absolute inset-0">
+                                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                      <div className="absolute inset-0 flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300 opacity-0 transition-opacity duration-200 [button[data-asset-missing='true']_&]:opacity-100">
+                                        Missing image (check filename/case)
+                                      </div>
+                                    </div>
                                   </button>
                                 ))}
                               </div>
@@ -1377,8 +1392,9 @@ export default function Portfolio() {
             {assetViewer.type === 'image' ? (
               <div className="relative w-full h-full">
                 <img
-                  src={assetViewer.src}
+                  src={toPublicUrl(assetViewer.src)}
                   alt="Project asset"
+                  onError={() => console.warn('Fullscreen asset failed to load:', assetViewer.src)}
                   className="w-full h-full object-contain bg-black"
                 />
 
@@ -1425,7 +1441,7 @@ export default function Portfolio() {
             ) : (
               // PDF iframe fills container
               <iframe
-                src={assetViewer.src}
+                src={toPublicUrl(assetViewer.src)}
                 title="Project document"
                 className="w-full h-full"
               />
