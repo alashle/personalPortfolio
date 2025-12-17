@@ -118,21 +118,21 @@ const PROJECTS = [
       'Coordinated agile sprints, maintained project documentation, and ensured on-time delivery of all analytical, visualization, and presentation milestones',
     ],
     assets: {
-      type: 'images',
-      items: [
-        '/ScreenShots_Demo/executive_overview.png',
-        '/ScreenShots_Demo/executive_overview_post_explorer.png',
-        '/ScreenShots_Demo/thematic.png',
-        '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
-        '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
-        '/ScreenShots_Demo/demographic_lens.png',
-        '/ScreenShots_Demo/contextual_questions_question_categories.png',
-        '/ScreenShots_Demo/contextual_questions_deep_dive.png',
-        '/ScreenShots_Demo/ai_copilot.png',
-      ],
-      pdf: [
-        '/Final Project Report_Deloitte.pdf',
-      ],
+        type: 'images',
+        items: [
+          '/ScreenShots_Demo/executive_overview.png',
+          '/ScreenShots_Demo/executive_overview_post_Explorer.png',
+          '/ScreenShots_Demo/thematic.png',
+          '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
+          '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
+          '/ScreenShots_Demo/Demographic_Lens.png',
+          '/ScreenShots_Demo/contextual_questions_question_categories.png',
+          '/ScreenShots_Demo/contextual_questions_deep_dive.png',
+          '/ScreenShots_Demo/AI_Copilot.png',
+        ],
+        pdf: [
+          '/Final Project Report_Deloitte.pdf',
+        ],
     },
   },
 
@@ -569,12 +569,6 @@ const RESUMES = {
 }
 
 export default function Portfolio() {
-  const toPublicUrl = (p: string) => {
-    if (!p) return p
-    const withSlash = p.startsWith('/') ? p : `/${p}`
-    // Important for production: encode spaces and other URL-unsafe characters
-    return encodeURI(withSlash)
-  }
   const [activeFilter, setActiveFilter] = useState<'featured' | 'all' | 'product' | 'data' | 'biotech'>('featured')
   const [showResumeModal, setShowResumeModal] = useState(false)
   const [selectedResume, setSelectedResume] = useState<'tech' | 'biotech'>('tech')
@@ -1095,47 +1089,14 @@ export default function Portfolio() {
                                     className="group relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
                                   >
                                     <img
-                                      src={toPublicUrl(src)}
-                                      alt=""
+                                      src={src}
+                                      alt={`${selectedProject.title} asset ${i + 1}`}
                                       loading="lazy"
-                                      onError={(e) => {
-                                        // Don’t hide the element; show a visible fallback and log the failing URL.
-                                        console.warn('Asset failed to load:', src)
-                                        e.currentTarget.style.opacity = '0'
-                                        const btn = e.currentTarget.closest('button')
-                                        if (btn) btn.setAttribute('data-asset-missing', 'true')
-                                      }}
-                                      className="absolute inset-0 w-full h-full object-cover"
+                                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
-                                    <div className="pointer-events-none absolute inset-0">
-                                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                                      <div className="absolute inset-0 flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300 opacity-0 transition-opacity duration-200 [button[data-asset-missing='true']_&]:opacity-100">
-                                        Missing image (check filename/case)
-                                      </div>
-                                    </div>
+                                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                                   </button>
                                 ))}
-                              </div>
-                              {/* Debug: direct asset links (helps verify production paths) */}
-                              <div className="mt-3 space-y-1">
-                                <p className="text-[11px] text-gray-500 dark:text-gray-400">Direct links (prod check):</p>
-                                <ul className="space-y-1">
-                                  {selectedProject.assets.items.map((rawSrc: string, idx: number) => {
-                                    const href = toPublicUrl(rawSrc);
-                                    return (
-                                      <li key={idx} className="text-[11px]">
-                                        <a
-                                          href={href}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="underline underline-offset-2 text-blue-600 dark:text-blue-400 break-all"
-                                        >
-                                          {href}
-                                        </a>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
                               </div>
                               {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
                                 <ul className="mt-3 list-disc pl-5 space-y-1">
@@ -1159,7 +1120,7 @@ export default function Portfolio() {
                                     <button
                                       key={i}
                                       type="button"
-                                      onClick={() => setAssetViewer({ type: 'pdf', src: toPublicUrl(pdfSrc) })}
+                                      onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
                                       className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                                       aria-label={`Open ${selectedProject.title} document ${i + 1}`}
                                     >
@@ -1236,7 +1197,7 @@ export default function Portfolio() {
                                 <button
                                   key={i}
                                   type="button"
-                                  onClick={() => setAssetViewer({ type: 'pdf', src: toPublicUrl(pdfSrc) })}
+                                  onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
                                   className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                                   aria-label={`Open ${selectedProject.title} document ${i + 1}`}
                                 >
@@ -1413,9 +1374,8 @@ export default function Portfolio() {
             {assetViewer.type === 'image' ? (
               <div className="relative w-full h-full">
                 <img
-                  src={toPublicUrl(assetViewer.src)}
+                  src={assetViewer.src}
                   alt="Project asset"
-                  onError={() => console.warn('Fullscreen asset failed to load:', assetViewer.src)}
                   className="w-full h-full object-contain bg-black"
                 />
 
@@ -1462,7 +1422,7 @@ export default function Portfolio() {
             ) : (
               // PDF iframe fills container
               <iframe
-                src={toPublicUrl(assetViewer.src)}
+                src={assetViewer.src}
                 title="Project document"
                 className="w-full h-full"
               />
