@@ -118,21 +118,21 @@ const PROJECTS = [
       'Coordinated agile sprints, maintained project documentation, and ensured on-time delivery of all analytical, visualization, and presentation milestones',
     ],
     assets: {
-        type: 'images',
-        items: [
-          '/screenshots_demo/executive_overview.png',                    
-          '/screenshots_demo/executive_overview_post_explorer.png',     
-          '/screenshots_demo/thematic.png',                             
-          '/screenshots_demo/thematic_insights_thematic_pulse.png',     
-          '/screenshots_demo/thematic_insights_thematic_deep_dive.png', 
-          '/screenshots_demo/demographic_lens.png',                     
-          '/screenshots_demo/contextual_questions_question_categories.png', 
-          '/screenshots_demo/contextual_questions_deep_dive.png',       
-          '/screenshots_demo/ai_copilot.png',                            
-        ],
-        pdf: [
-          '/Final Project Report_Deloitte.pdf',
-        ],
+      type: 'images',
+      items: [
+        '/ScreenShots_Demo/executive_overview.png',
+        '/ScreenShots_Demo/executive_overview_post_explorer.png',
+        '/ScreenShots_Demo/thematic.png',
+        '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
+        '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
+        '/ScreenShots_Demo/demographic_lens.png',
+        '/ScreenShots_Demo/contextual_questions_question_categories.png',
+        '/ScreenShots_Demo/contextual_questions_deep_dive.png',
+        '/ScreenShots_Demo/ai_copilot.png',
+      ],
+      pdf: [
+        '/Final Project Report_Deloitte.pdf',
+      ],
     },
   },
 
@@ -1116,6 +1116,27 @@ export default function Portfolio() {
                                   </button>
                                 ))}
                               </div>
+                              {/* Debug: direct asset links (helps verify production paths) */}
+                              <div className="mt-3 space-y-1">
+                                <p className="text-[11px] text-gray-500 dark:text-gray-400">Direct links (prod check):</p>
+                                <ul className="space-y-1">
+                                  {selectedProject.assets.items.map((rawSrc: string, idx: number) => {
+                                    const href = toPublicUrl(rawSrc);
+                                    return (
+                                      <li key={idx} className="text-[11px]">
+                                        <a
+                                          href={href}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="underline underline-offset-2 text-blue-600 dark:text-blue-400 break-all"
+                                        >
+                                          {href}
+                                        </a>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </div>
                               {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
                                 <ul className="mt-3 list-disc pl-5 space-y-1">
                                   {(selectedProject.assets as any).links.map((lnk: { label: string; url: string }, i: number) => (
@@ -1138,7 +1159,7 @@ export default function Portfolio() {
                                     <button
                                       key={i}
                                       type="button"
-                                      onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
+                                      onClick={() => setAssetViewer({ type: 'pdf', src: toPublicUrl(pdfSrc) })}
                                       className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                                       aria-label={`Open ${selectedProject.title} document ${i + 1}`}
                                     >
@@ -1215,7 +1236,7 @@ export default function Portfolio() {
                                 <button
                                   key={i}
                                   type="button"
-                                  onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
+                                  onClick={() => setAssetViewer({ type: 'pdf', src: toPublicUrl(pdfSrc) })}
                                   className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                                   aria-label={`Open ${selectedProject.title} document ${i + 1}`}
                                 >
