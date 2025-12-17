@@ -74,7 +74,7 @@ const PROJECTS = [
     period: '2025',
     context: 'Needed a fast, accessible, and easily updatable personal site to showcase projects and resumes.',
     description: 'Interactive portfolio featuring project filtering, detail modals, full-screen asset viewer, smooth section scrolling, and responsive dark-mode design.',
-    impact: '95+ Lighthouse score • <200ms TTFB • 100/100 accessibility • 30% engagement boost',
+    impact: '95+ Lighthouse score • <200ms TTFB • 100/100 accessibility • 60% engagement boost',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     category: ['featured', 'product'],
     gradient: 'from-sky-500 to-indigo-500',
@@ -91,7 +91,10 @@ const PROJECTS = [
       items: [
         { label: "You're looking at it right now :)" },
         { label: 'GitHub Repository', url: 'https://github.com/alashle/personalPortfolio' }
-      ]
+      ],
+      pdf: [
+          '/PageSpeed Insights.pdf',
+      ],
     }
   },
 
@@ -560,8 +563,8 @@ const RESUMES = {
     download: "/LASHLEY_ABDOULAY_RESUME_TECH.pdf",
   },
   biotech: {
-    preview: "/LASHLEY_ABDOULAY_RESUME_BIOTECH.pdf",
-    download: "/LASHLEY_ABDOULAY_RESUME_BIOTECH.pdf",
+    preview: "/LASHLEY_ABDOULAY_RESUME_BIOTECH2.pdf",
+    download: "/LASHLEY_ABDOULAY_RESUME_BIOTECH2.pdf",
   },
 }
 
@@ -1168,26 +1171,43 @@ export default function Portfolio() {
                           );
                         })()
                       ) : selectedProject.assets.type === 'links' && Array.isArray(selectedProject.assets.items) ? (
-                        <ul className="list-disc pl-5 space-y-1">
-                          {selectedProject.assets.items.map((lnk: { label: string; url?: string }, i: number) => (
-                            <li key={i}>
-                              {lnk.url ? (
-                                <a
-                                  href={lnk.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                        <>
+                          <ul className="list-disc pl-5 space-y-1">
+                            {selectedProject.assets.items.map((lnk: { label: string; url?: string }, i: number) => (
+                              <li key={i}>
+                                {lnk.url ? (
+                                  <a
+                                    href={lnk.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                  >
+                                    {lnk.label}
+                                  </a>
+                                ) : (
+                                  <span className="text-sm text-gray-600 dark:text-gray-300 italic">{lnk.label}</span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+
+                          {Array.isArray((selectedProject.assets as any).pdf) && (selectedProject.assets as any).pdf.length > 0 && (
+                            <div className="mt-4 space-y-2">
+                              {(selectedProject.assets as any).pdf.map((pdfSrc: string, i: number) => (
+                                <button
+                                  key={i}
+                                  type="button"
+                                  onClick={() => setAssetViewer({ type: 'pdf', src: pdfSrc })}
+                                  className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                                  aria-label={`Open ${selectedProject.title} document ${i + 1}`}
                                 >
-                                  {lnk.label}
-                                </a>
-                              ) : (
-                                <span className="text-sm text-gray-600 dark:text-gray-300 italic">
-                                  {lnk.label}
-                                </span>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
+                                  <Download className="w-4 h-4" />
+                                  View PDF
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </>
                       ) : null
                     )
                   )}
