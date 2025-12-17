@@ -120,15 +120,15 @@ const PROJECTS = [
     assets: {
         type: 'images',
         items: [
-          '/ScreenShots_Demo/executive_overview.png',
-          '/ScreenShots_Demo/executive_overview_post_explorer.png',
-          '/ScreenShots_Demo/thematic.png',
-          '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',
-          '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png',
-          '/ScreenShots_Demo/demographic_lens.png',
-          '/ScreenShots_Demo/contextual_questions_question_categories.png',
-          '/ScreenShots_Demo/contextual_questions_deep_dive.png',
-          '/ScreenShots_Demo/ai_copilot.png',
+          '/ScreenShots_Demo/executive_overview.png',                    
+          '/ScreenShots_Demo/executive_overview_post_explorer.png',     
+          '/ScreenShots_Demo/thematic.png',                             
+          '/ScreenShots_Demo/thematic_insights_thematic_pulse.png',     
+          '/ScreenShots_Demo/thematic_insights_thematic_deep_dive.png', 
+          '/ScreenShots_Demo/demographic_lens.png',                     
+          '/ScreenShots_Demo/contextual_questions_question_categories.png', 
+          '/ScreenShots_Demo/contextual_questions_deep_dive.png',       
+          '/ScreenShots_Demo/ai_copilot.png',                            
         ],
         pdf: [
           '/Final Project Report_Deloitte.pdf',
@@ -1091,8 +1091,8 @@ export default function Portfolio() {
                                     <img
                                       src={src}
                                       alt=""
-                                      fill
-                                      onError={(e: { currentTarget: { style: { display: string; }; }; }) => {
+                                      loading="lazy"
+                                      onError={(e) => {
                                         e.currentTarget.style.display = 'none'
                                       }}
                                       className="absolute inset-0 w-full h-full object-cover"
