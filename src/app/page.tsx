@@ -15,15 +15,18 @@ const PERSONAL_INFO = {
   github: 'https://github.com/alashle',
   location: 'Washington D.C. Metro Area',
   about: {
-    intro: 'I Transform Complex Challenges Into Elegant Solutions That Create Real Impact',
-    main: "My journey spans from bioengineering labs at UMD to L'Oréal's manufacturing floors, and now into the forefront of data science, product management, and generative AI. I bring a unique perspective: the precision of an engineer, the vision of a product manager, and the analytical rigor of a data scientist.",
-    closer: "A recent MS in Information Systems graduate from UMD and Terrapin Scholar, I’ve led teams across projects ranging from enterprise NLP platforms to blockchain logistics. I focus on building thoughtful products that connect real human needs with practical, scalable technology.",
+    intro: 'I Transform Complex Challenges Into Human-Centered, Data-Driven Products That Create Real Impact',
+    main: "My path connects bioengineering, manufacturing quality, data science, and product strategy. I started by building bias-aware medical devices and improving quality systems on L'Oréal's manufacturing floor, then expanded into AI, analytics, and full-stack product development through my MS in Information Systems at UMD.",
+    closer: "Today, I build at the intersection of AI, healthcare, and product execution. As a Data Science Intern at The Brite Group, I've developed an explainable chest X-ray classification platform using deep learning, stacked modeling, Grad-CAM interpretability, and a FastAPI + React interface designed to make complex predictions easier to understand.",
   },
   stats: [
-    { label: 'Projects Shipped', value: '5+', icon: <Rocket className="w-12 h-12 mx-auto text-blue-600" /> },
-    { label: 'Users Impacted', value: '100K+', icon: <Users className="w-12 h-12 mx-auto text-blue-600" /> },
+    { label: 'Projects Built', value: '14+', icon: <Rocket className="w-12 h-12 mx-auto text-blue-600" /> },
+
+    { label: 'Records Analyzed', value: '2M+', icon: <Database className="w-12 h-12 mx-auto text-blue-600" /> },
+
     { label: 'Team Size Led', value: '6+', icon: <UserCheck className="w-12 h-12 mx-auto text-blue-600" /> },
-    { label: 'Dedication, Commitment, and Resiliency ', value: '100%', icon: <TrendingUp className="w-12 h-12 mx-auto text-blue-600" /> },
+
+    { label: 'Dedication & Resiliency', value: '100%', icon: <TrendingUp className="w-12 h-12 mx-auto text-blue-600" /> },
     
   ],
 }
@@ -43,8 +46,8 @@ const EDUCATION = [
         url: "/Full-Stack PM Bootcamp Certificate - Abdoulay Lashley.pdf",
         color: "text-green-600 dark:text-green-400"
       },
-      "AWS Academy Certified in Cloud Architecting and Machine Learning Foundations",
-      "Led Deloitte-sponsored Capstone developing an NLP platform for Veteran sentiment analysis using AWS and LLMs",
+      "AWS Academy Training in Cloud Architecting and Machine Learning Foundations",
+      "Led Deloitte-sponsored Capstone developing an NLP platform for Veteran sentiment analysis using LLMs",
       "Collaborated with cross-functional teams on data-driven projects in predictive analytics and AI strategy",
       "Developed dashboards, data pipelines, and AI prototypes that bridge business insights with technology innovation",
     ],
@@ -67,6 +70,47 @@ const EDUCATION = [
 const ASSET_TITLE = 'Resources'; // rename this to any option above
 
 const PROJECTS = [
+  {
+  id: 16,
+  title: 'PulmoVision AI: Explainable Chest-X-Ray Platform',
+  company: 'The Brite Group',
+  period: '2026',
+  context: 'Clinical AI workflows need diagnostic support tools that can classify multiple chest X-ray findings while making model reasoning visible, interpretable, and easier for users to trust.',
+  description: 'Version 1 (V1) prototype of a full-stack explainable AI platform for multi-label chest X-ray classification, combining fold-aware CNN training, SVM-GAP features, XGBoost stacking, Grad-CAM visual explanations, and a real-time diagnostic interface.',
+  impact: '14 thoracic conditions • 10 CNN streams • 5-fold OOF stacking • GCP GPU training • Grad-CAM explainability • V1 prototype in active development',
+  tech: ['Python', 'PyTorch', 'Torchvision', 'XGBoost', 'LinearSVC', 'FastAPI', 'React/Next.js', 'Grad-CAM', 'CheXpert', 'CheXbert', 'GCP GPU VM'],
+  category: ['featured', 'product', 'data', 'biotech'],
+  gradient: 'from-green-600 to-indigo-500',
+  whatIOwned: [
+    'Built the fold-aware Level 0 stacking pipeline that trains CNN base learners and exports out-of-fold prediction features for downstream XGBoost meta-learners',
+    'Implemented multi-label chest X-ray modeling across 14 CheXpert conditions using DenseNet-121, ResNet-50, Inception-V3, and SVM-GAP feature streams',
+    'Generated model evaluation reports with AUROC, precision, recall, F1, subset accuracy, hamming loss, per-label validation loss, coverage ratio, and computational statistics',
+    'Developed SVM-GAP workflows by extracting DenseNet global-average-pooled embeddings and training one LinearSVC classifier per thoracic label',
+    'Trained and benchmarked model workflows on GCP GPU infrastructure to accelerate experimentation beyond local CPU/MPS limitations',
+    'Integrated a FastAPI inference server with the React/Next.js front end, supporting image upload, loading-state UX, prediction display, Grad-CAM overlays, and chatbot-ready results',
+    'Designed and developed the current V1 prototype UI/UX workflow spanning image upload, AI analysis progression, Grad-CAM explainability views, statistical performance dashboards, and conversational diagnostic assistance, with final production refinements and deployment planned in the coming weeks'
+  ],
+  assets: {
+    type: 'images',
+    items: [
+      '/PulmoVision_SC1.png',
+      '/PulmoVision_SC2.png',
+      '/PulmoVision_SC3.png',
+      '/PulmoVision_SC4.png',
+      '/PulmoVision_SC5.png',
+      '/PulmoVision_SC6.png',
+      '/PulmoVision_SC7.png',
+      '/PulmoVision_SC8.png',
+      '/PulmoVision_SC9.png',
+    ],
+    links: [
+      {
+        label: 'V1 Prototype: Final production refinements, expanded functionality, and deployment are currently in progress and planned for the coming weeks.'
+      }
+    ],
+  },
+},
+  
   {
     id: 15,
     title: 'Personal Portfolio v4',
@@ -97,6 +141,8 @@ const PROJECTS = [
       ],
     }
   },
+
+  
 
   {
     id: 1,
@@ -448,110 +494,124 @@ const PROJECTS = [
 
 // Skills with Icons
 const SKILLS = {
-  'Product & Strategy': {
-    icon: <Briefcase className="w-5 h-5" />,
-    skills: [
-      'Product Management',
-      'Agile & Scrum',
-      'Product Roadmapping',
-      'Stakeholder Communication',
-      'Risk Management',
-      'Cross-functional Collaboration',
-      'Prioritization & QA Oversight',
-      'B2B & B2C Strategy',
-      'OKRs & KPIs'
-    ],
-  },
-  'Data & Analytics': {
-    icon: <Database className="w-5 h-5" />,
+  'Programming & Data Processing': {
+    icon: <Code className="w-5 h-5" />,
     skills: [
       'Python',
-      'R',
       'SQL',
-      'Hadoop',
-      'Hive',
-      'Spark',
-      'MapReduce',
+      'R',
+      'JavaScript',
+      'TypeScript',
       'PySpark MLlib',
-      'Data Mining & Predictive Analytics',
-      'Statistical Modeling',
-      'Frequent Pattern Mining',
-      'Cluster Analysis'
+      'Spark Streaming',
+      'Node.js',
+      'Express.js',
+      'ETL/ELT',
+      'Data Pipelines'
     ],
   },
-  'AI & Machine Learning': {
+  'Machine Learning & Statistical Analysis': {
     icon: <Brain className="w-5 h-5" />,
     skills: [
-      'AI/ML',
-      'NLP',
-      'LLMs (GPT-5, OpenAI API)',
-      'Amazon SageMaker',
-      'AWS Comprehend',
+      'PyTorch',
+      'TensorFlow',
       'Scikit-learn',
       'Pandas',
-      'Seaborn',
-      'Deep Learning',
+      'NLP',
+      'LLMs',
+      'OpenAI API',
+      'Computer Vision (CNNs)',
+      'Transfer Learning',
+      'Grad-CAM',
+      'Model Fine-tuning',
+      'Feature Engineering',
+      'Model Evaluation',
+      'Cross-Validation',
+      'Hyperparameter Tuning',
+      'Regression & Classification',
+      'Clustering',
+      'A/B Testing',
       'MLOps',
-      'Prompt Engineering'
+      'AWS Comprehend'
     ],
   },
-  'Business Intelligence & Visualization': {
+  'Business Intelligence & Data Visualization': {
     icon: <TrendingUp className="w-5 h-5" />,
     skills: [
       'Power BI',
       'Tableau',
       'Amazon QuickSight',
+      'Plotly',
+      'Seaborn',
+      'ggplot2',
       'Google Analytics',
-      'Dashboard Design',
-      'Data Storytelling',
       'React.js',
       'Next.js',
       'Tailwind CSS',
       'Leaflet.js'
     ],
   },
-  'Cloud & Databases': {
-    icon: <Code className="w-5 h-5" />,
+  'Cloud Technologies & Big Data': {
+    icon: <Database className="w-5 h-5" />,
     skills: [
       'AWS (EC2, S3, RDS, Lambda, VPC, CloudFront, Glue, CloudFormation, IAM)',
-      'Azure',
-      'Google Cloud Platform (GCP)',
-      'MySQL',
-      'NoSQL',
-      'MongoDB',
-      'Neo4J',
-      'Snowflake',
+      'Amazon SageMaker',
       'BigQuery',
-      'Vercel CDN'
+      'Snowflake',
+      'Apache Spark',
+      'Apache Hadoop',
+      'Microsoft Azure',
+      'Google Cloud Platform (GCP)'
     ],
   },
-  'Software & Tools': {
+  Databases: {
+    icon: <Database className="w-5 h-5" />,
+    skills: [
+      'NoSQL',
+      'MySQL',
+      'MongoDB',
+      'Neo4J'
+    ],
+  },
+  'Project & Product Management': {
+    icon: <Briefcase className="w-5 h-5" />,
+    skills: [
+      'Agile',
+      'SCRUM',
+      'Product Management',
+      'Risk Management',
+      'QA',
+      'JIRA',
+      'Confluence',
+      'Microsoft Project',
+      'Figma (UX/UI) Design'
+    ],
+  },
+  'Business Strategy & Communication': {
+    icon: <Briefcase className="w-5 h-5" />,
+    skills: [
+      'Business Strategy',
+      'Stakeholder Communication',
+      'Cross-functional Collaboration',
+      'Prioritization'
+    ],
+  },
+  'Software Tools & Platforms': {
     icon: <Beaker className="w-5 h-5" />,
     skills: [
-      'Node.js',
-      'Express.js',
-      'REST APIs',
-      'Microservices',
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'TypeScript',
-      'JSON',
+      'FastAPI',
+      'Git/GitHub',
       'Jupyter',
       'VSCode',
-      'Git/GitHub',
       'Google Colab',
-      'SAP',
-      'Microsoft Office',
-      'Google Workspace',
-      'Lucidchart',
+      'HTML',
+      'CSS',
+      'Spark GraphFrames',
       'Kafka',
       'Sqoop',
-      'Apache Spark',
       'OpenCageData API',
       'Geolib',
-      'Chrome DevTools',
-      'Figma (UX/UI Design)'
+      'REST APIs'
     ],
   },
 }
@@ -697,15 +757,9 @@ export default function Portfolio() {
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-pointer"
               >
                 <Eye className="w-4 h-4" />
-                Tech Resume
+                View Resume
               </button>
-              <button
-                onClick={() => openResume('biotech')}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-pointer"
-              >
-                <Eye className="w-4 h-4" />
-                Biotech Resume
-              </button>
+              
 
                           </div>
           </div>
@@ -1099,20 +1153,26 @@ export default function Portfolio() {
                                 ))}
                               </div>
                               {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
-                                <ul className="mt-3 list-disc pl-5 space-y-1">
-                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url: string }, i: number) => (
-                                    <li key={i}>
-                                      <a
-                                        href={lnk.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
-                                      >
-                                        {lnk.label}
-                                      </a>
-                                    </li>
+                                <div className="mt-3 space-y-1">
+                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url?: string }, i: number) => (
+                                    <div key={i}>
+                                      {lnk.url ? (
+                                        <a
+                                          href={lnk.url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                        >
+                                          {lnk.label}
+                                        </a>
+                                      ) : (
+                                        <span className="inline-block rounded-lg bg-green-50 px-3 py-2 text-sm font-medium text-green-700 ring-1 ring-green-200 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-800">
+                                          {lnk.label}
+                                        </span>
+                                      )}
+                                    </div>
                                   ))}
-                                </ul>
+                                </div>
                               )}
                               {Array.isArray((selectedProject.assets as any).pdf) && (selectedProject.assets as any).pdf.length > 0 && (
                                 <div className="mt-4 space-y-2">
@@ -1152,29 +1212,35 @@ export default function Portfolio() {
                                 />
                               </button>
                               {Array.isArray((selectedProject.assets as any).links) && (selectedProject.assets as any).links.length > 0 && (
-                                <ul className="mt-3 list-disc pl-5 space-y-1">
-                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url: string }, i: number) => (
-                                    <li key={i}>
-                                      <a
-                                        href={lnk.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
-                                      >
-                                        {lnk.label}
-                                      </a>
-                                    </li>
+                                <div className="mt-3 space-y-1">
+                                  {(selectedProject.assets as any).links.map((lnk: { label: string; url?: string }, i: number) => (
+                                    <div key={i}>
+                                      {lnk.url ? (
+                                        <a
+                                          href={lnk.url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-sm text-blue-600 dark:text-blue-400 underline underline-offset-2"
+                                        >
+                                          {lnk.label}
+                                        </a>
+                                      ) : (
+                                        <span className="inline-block rounded-lg bg-green-50 px-3 py-2 text-sm font-medium text-green-700 ring-1 ring-green-200 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-800">
+                                          {lnk.label}
+                                        </span>
+                                      )}
+                                    </div>
                                   ))}
-                                </ul>
+                                </div>
                               )}
                             </>
                           );
                         })()
                       ) : selectedProject.assets.type === 'links' && Array.isArray(selectedProject.assets.items) ? (
                         <>
-                          <ul className="list-disc pl-5 space-y-1">
+                          <div className="space-y-1">
                             {selectedProject.assets.items.map((lnk: { label: string; url?: string }, i: number) => (
-                              <li key={i}>
+                              <div key={i}>
                                 {lnk.url ? (
                                   <a
                                     href={lnk.url}
@@ -1187,9 +1253,9 @@ export default function Portfolio() {
                                 ) : (
                                   <span className="text-sm text-gray-600 dark:text-gray-300 italic">{lnk.label}</span>
                                 )}
-                              </li>
+                              </div>
                             ))}
-                          </ul>
+                          </div>
 
                           {Array.isArray((selectedProject.assets as any).pdf) && (selectedProject.assets as any).pdf.length > 0 && (
                             <div className="mt-4 space-y-2">
@@ -1316,7 +1382,7 @@ export default function Portfolio() {
             <div className="flex items-center justify-between gap-3 p-4 border-b border-gray-200 dark:border-gray-800">
               <div className="flex items-center gap-3">
                 <Eye className="w-4 h-4" />
-                <span className="text-sm font-medium">{selectedResume === 'tech' ? 'Tech Resume' : 'Biotech Resume'}</span>
+                <span className="text-sm font-medium">{selectedResume === 'tech' ? 'Resume' : 'Biotech Resume'}</span>
               </div>
               <div className="flex items-center gap-2">
                 <a
