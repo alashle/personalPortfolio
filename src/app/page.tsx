@@ -104,8 +104,12 @@ const PROJECTS = [
       '/PulmoVision_SC8.png',
       '/PulmoVision_SC9.png',
     ],
-    video: 'https://6sqck4wlbxuukiva.public.blob.vercel-storage.com/PulmoVisionAI.mp4',
+    video: 'https://www.youtube-nocookie.com/embed/c4yIGiNTuBY?rel=0&modestbranding=1&vq=hd2160',
     links: [
+      {
+        label: 'Open PulmoVision Demo Video on YouTube',
+        url: 'https://youtu.be/c4yIGiNTuBY'
+      },
       {
         label: 'Completed full product with final interface, model pipeline, explainability workflow, clinical assistant integration, and clinician-led triage support.'
       }
@@ -1130,11 +1134,14 @@ export default function Portfolio() {
                             <>
                               {(selectedProject.assets as { video?: string }).video && (
                                 <div className="mb-3 w-full rounded-xl overflow-hidden bg-black aspect-video shadow-lg">
-                                  <video
+                                  <iframe
                                     src={(selectedProject.assets as { video?: string }).video}
-                                    controls
-                                    playsInline
-                                    className="w-full h-full"
+                                    title={`${selectedProject.title} demo video`}
+                                    className="w-full h-full border-0"
+                                    loading="lazy"
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
                                   />
                                 </div>
                               )}
