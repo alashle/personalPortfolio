@@ -104,7 +104,7 @@ const PROJECTS = [
       '/PulmoVision_SC8.png',
       '/PulmoVision_SC9.png',
     ],
-    video: '/PulmoVision.mp4',
+    video: 'https://6sqck4wlbxuukiva.public.blob.vercel-storage.com/PulmoVisionAI.mp4',
     links: [
       {
         label: 'Completed full product with final interface, model pipeline, explainability workflow, clinical assistant integration, and clinician-led triage support.'
