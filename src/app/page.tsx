@@ -72,23 +72,24 @@ const ASSET_TITLE = 'Resources'; // rename this to any option above
 const PROJECTS = [
   {
   id: 16,
-  title: 'PulmoVision AI: Explainable Chest-X-Ray Platform',
+  title: 'PulmoVision AI: Explainable Chest X-Ray Platform',
   company: 'The Brite Group',
   period: '2026',
-  context: 'Clinical AI workflows need diagnostic support tools that can classify multiple chest X-ray findings while making model reasoning visible, interpretable, and easier for users to trust.',
-  description: 'Version 1 (V1) prototype of a full-stack explainable AI platform for multi-label chest X-ray classification, combining fold-aware CNN training, SVM-GAP features, XGBoost stacking, Grad-CAM visual explanations, and a real-time diagnostic interface.',
-  impact: '14 thoracic conditions • 10 CNN streams • 5-fold OOF stacking • GCP GPU training • Grad-CAM explainability • V1 prototype in active development',
-  tech: ['Python', 'PyTorch', 'Torchvision', 'XGBoost', 'LinearSVC', 'FastAPI', 'React/Next.js', 'Grad-CAM', 'CheXpert', 'CheXbert', 'GCP GPU VM'],
+  context: 'Clinicians, radiologists, nurses, and care teams often need to review chest X-rays quickly while balancing urgent cases, routine findings, patient needs, cost considerations, and heavy diagnostic workloads. PulmoVision AI was designed as clinical decision support, not a replacement for medical judgment, helping teams prioritize urgent abnormalities, streamline triage, reduce unnecessary downstream testing when appropriate, and support faster, more informed patient care.',
+  description: 'Production-ready full-stack explainable AI platform for multi-label chest X-ray classification across 14 thoracic conditions, combining CNN backbones, SVM-GAP classifiers, XGBoost stacked generalization, dual-model CAM explainability, and a real-time clinical diagnostic interface that supports triage, prioritization, and clinician-led decision-making.',
+  impact: '223K+ radiographs • 14 thoracic conditions • 10 model streams • 141-feature XGBoost meta-learner • 0.787 mean OOF AUROC • 0.733 macro recall • 0.879 top base-model AUROC',
+  tech: ['Python', 'PyTorch', 'Torchvision', 'DenseNet-121', 'ResNet-50', 'Inception-V3', 'XGBoost', 'LinearSVC', 'FastAPI', 'Next.js', 'Grad-CAM', 'CheXpert', 'CheXbert', 'VisualCheXbert', 'GCP GPU VM'],
   category: ['featured', 'product', 'data', 'biotech'],
   gradient: 'from-green-600 to-indigo-500',
   whatIOwned: [
-    'Built the fold-aware Level 0 stacking pipeline that trains CNN base learners and exports out-of-fold prediction features for downstream XGBoost meta-learners',
-    'Implemented multi-label chest X-ray modeling across 14 CheXpert conditions using DenseNet-121, ResNet-50, Inception-V3, and SVM-GAP feature streams',
-    'Generated model evaluation reports with AUROC, precision, recall, F1, subset accuracy, hamming loss, per-label validation loss, coverage ratio, and computational statistics',
-    'Developed SVM-GAP workflows by extracting DenseNet global-average-pooled embeddings and training one LinearSVC classifier per thoracic label',
-    'Trained and benchmarked model workflows on GCP GPU infrastructure to accelerate experimentation beyond local CPU/MPS limitations',
-    'Integrated a FastAPI inference server with the React/Next.js front end, supporting image upload, loading-state UX, prediction display, Grad-CAM overlays, and chatbot-ready results',
-    'Designed and developed the current V1 prototype UI/UX workflow spanning image upload, AI analysis progression, Grad-CAM explainability views, statistical performance dashboards, and conversational diagnostic assistance, with final production refinements and deployment planned in the coming weeks'
+    'Architected PulmoVision AI as a completed, production-ready explainable AI platform for multi-label chest X-ray classification across 14 thoracic conditions using 223K+ CheXpert radiographs',
+    'Built a stacked generalization framework combining DenseNet-121, ResNet-50, and Inception-V3 CNN backbones with SVM-GAP classifier streams for frontal and lateral radiograph views',
+    'Engineered a 5-fold, view-aware machine learning pipeline that generated out-of-fold predictions across 10 model streams and constructed a 141-feature input vector for the XGBoost meta-learner',
+    'Achieved a 0.787 mean OOF AUROC across all 14 labels with 0.733 macro recall, prioritizing clinical sensitivity across pathological conditions',
+    'Identified DenseNet-121 VisualCheXbert frontal as the strongest base model with 0.879 mean AUROC and per-label AUROC reaching 0.942',
+    'Implemented a dual-model CAM explainability system that fused CheXbert and VisualCheXbert feature maps through weighted averaging, preserving spatial interpretability while resolving CUDA instability from backward-pass gradient computation',
+    'Delivered a full-stack clinical diagnostic interface with FastAPI and Next.js, supporting image upload, real-time CAM visualization, AUROC-weighted abnormality scoring, prediction summaries, performance dashboards, and clinician-facing triage workflows',
+    'Integrated a clinical assistant workflow powered by GPT-5.5, Claude 4.7 and 4.6, Gemini 3.1, and Llama 4 Maverick, featuring 4-tier urgency triage and condition-specific intervention guidance to help prioritize urgent cases, reduce clinician workload, and support cost-conscious care without replacing clinical decisions'
   ],
   assets: {
     type: 'images',
@@ -103,9 +104,10 @@ const PROJECTS = [
       '/PulmoVision_SC8.png',
       '/PulmoVision_SC9.png',
     ],
+    video: '/PulmoVision.mp4',
     links: [
       {
-        label: 'V1 Prototype: Final production refinements, expanded functionality, and deployment are currently in progress and planned for the coming weeks.'
+        label: 'Completed full product with final interface, model pipeline, explainability workflow, clinical assistant integration, and clinician-led triage support.'
       }
     ],
   },
@@ -1126,6 +1128,16 @@ export default function Portfolio() {
                           const grid = cols === 1 ? 'grid-cols-1' : cols === 2 ? 'grid-cols-2' : 'grid-cols-3';
                           return (
                             <>
+                              {(selectedProject.assets as { video?: string }).video && (
+                                <div className="mb-3 w-full rounded-xl overflow-hidden bg-black aspect-video shadow-lg">
+                                  <video
+                                    src={(selectedProject.assets as { video?: string }).video}
+                                    controls
+                                    playsInline
+                                    className="w-full h-full"
+                                  />
+                                </div>
+                              )}
                               <div className={`grid gap-2 ${grid}`}>
                                 {selectedProject.assets.items.map((src: string, i: number) => (
                                   <button
